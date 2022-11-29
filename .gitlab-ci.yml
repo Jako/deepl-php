@@ -46,6 +46,7 @@ build image:
       - PHP_VERSION: "8.1"
       - PHP_VERSION: "8.0"
       - PHP_VERSION: "7.4"
+      - PHP_VERSION: "7.4-fpm"
       - PHP_VERSION: "7.3"
 
 # stage: check ----------------------
@@ -69,6 +70,8 @@ test:
       - PHP_VERSION: "8.0"
         USE_MOCK_SERVER: "use mock server"
       - PHP_VERSION: "7.4"
+        USE_MOCK_SERVER: "use mock server"
+      - PHP_VERSION: "7.4-fpm"
         USE_MOCK_SERVER: "use mock server"
       - PHP_VERSION: "7.3"
         USE_MOCK_SERVER: "use mock server"
