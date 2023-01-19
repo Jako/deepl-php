@@ -437,6 +437,24 @@ request, see the [documentation for cURL][curl-proxy-docs].
 To enable logging, specify a [`PSR-3` compatible logger][PSR-3-logger] as the 
 `'logger'` option in the `Translator` configuration options.
 
+#### Anonymous platform information
+
+By default, we send some basic information about the platform the client library is running on with each request, see [here for an explanation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent). This data is completely anonymous and only used to improve our product, not track any individual users. If you do not wish to send this data, you can opt-out when creating your `Translator` object by setting the `send_platform_option` flag in the options like so:
+
+```php
+$translator = new \DeepL\Translator('YOUR_AUTH_KEY', ['send_platform_info' => false]);
+```
+
+You can also customize the `User-Agent` header completely by setting its value explicitly in the options via the `headers` field (this overrides the `send_platform_option` option). For example::
+
+```php
+$headers = [
+    'Authorization' => "DeepL-Auth-Key YOUR_AUTH_KEY",
+    'User-Agent' => 'my-custom-php-client',
+];
+$translator = new \DeepL\Translator('YOUR_AUTH_KEY', ['headers' => $headers]);
+```
+
 ### Request retries
 
 Requests to the DeepL API that fail due to transient conditions (for example,
