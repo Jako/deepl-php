@@ -390,6 +390,21 @@ Note that glossaries work for all target regional-variants: a glossary for the
 target language English (`'en'`) supports translations to both American English
 (`'en-US'`) and British English (`'en-GB'`).
 
+### Writing a Plugin
+
+If you use this library in an application, please identify the application with
+the `app_info` TranslatorOption, which needs the name and version of the app:
+
+```php
+$options = ['app_info' => new \DeepL\AppInfo('my-custom-php-chat-client', '1.2.3')];
+$translator = new \DeepL\Translator('YOUR_AUTH_KEY', $options);
+```
+
+This information is passed along when the library makes calls to the DeepL API.
+Both name and version are required. Please note that setting the `User-Agent` header
+via the `headers` TranslatorOption will override this setting, if you need to use this,
+please manually identify your Application in the `User-Agent` header.
+
 ### Configuration
 
 The `Translator` constructor accepts configuration options as a second argument,
