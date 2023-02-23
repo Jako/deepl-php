@@ -1,5 +1,6 @@
 ARG PHP_VERSION
-FROM php:${PHP_VERSION}
+ARG CI_CONTAINER_REPO
+FROM ${CI_CONTAINER_REPO}/php:${PHP_VERSION}
 RUN apt-get update -yqq
 RUN apt-get install git -yqq
 
