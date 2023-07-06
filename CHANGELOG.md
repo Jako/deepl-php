@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+### Changed
+* Document autoloading and make it clear this is the recommended way to use this library.
 
 
 ## [1.5.0] - 2023-06-26
