@@ -37,6 +37,14 @@ To use it in your PHP project, use the [autoload][composer-autoload] generated b
 require_once 'vendor/autoload.php';
 ```
 
+### Installation without composer
+
+Alternatively, you can manually download the latest [release][releases], and use the following in your project to load the library:
+
+```php
+require_once '/path/to/deepl-php/init.php';
+```
+
 ### Requirements
 
 The library officially supports PHP 7.3 and later.
@@ -549,3 +557,5 @@ environment variables defined referring to the mock-server.
 [pro-account]: https://www.deepl.com/pro-account/?utm_source=github&utm_medium=github-php-readme
 
 [PSR-3-logger]: http://www.php-fig.org/psr/psr-3/
+
+[releases]: https://github.com/DeepLcom/deepl-php/releases

@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+### Added
+* Add `init.php` file to allow using the library easily without autoloading.
 ### Changed
 * Document autoloading and make it clear this is the recommended way to use this library.
 
