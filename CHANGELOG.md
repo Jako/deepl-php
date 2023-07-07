@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [Unreleased]
+### Fixed
+* Only add cURL version to the user-agent string if no custom HTTP client is used.
+  * Thanks to [Radon8472](https://github.com/Radon8472) for the suggestion/report in [#29](https://github.com/DeepLcom/deepl-php/issues/29)
 
 
 ## [1.5.0] - 2023-06-26

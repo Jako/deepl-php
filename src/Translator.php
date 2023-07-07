@@ -55,6 +55,7 @@ class Translator
                 'Authorization' => "DeepL-Auth-Key $authKey",
                 'User-Agent' => self::constructUserAgentString(
                     $options[TranslatorOptions::SEND_PLATFORM_INFO] ?? true,
+                    !array_key_exists(TranslatorOptions::HTTP_CLIENT, $options),
                     $options[TranslatorOptions::APP_INFO] ?? null
                 ),
             ],
@@ -726,7 +727,7 @@ class Translator
         return substr($authKey, -3) === ':fx';
     }
 
-    private static function constructUserAgentString(bool $sendPlatformInfo, ?AppInfo $appInfo): string
+    private static function constructUserAgentString(bool $sendPlatformInfo, bool $useCurl, ?AppInfo $appInfo): string
     {
         $libraryVersion = self::VERSION;
         $libraryInfoStr = "deepl-php/$libraryVersion";
@@ -735,8 +736,10 @@ class Translator
                 $platformStr = php_uname('s r v m');
                 $phpVersion = phpversion();
                 $libraryInfoStr .= " ($platformStr) php/$phpVersion";
-                $curlVer = curl_version()['version'];
-                $libraryInfoStr .= " curl/$curlVer";
+                if ($useCurl) {
+                    $curlVer = curl_version()['version'];
+                    $libraryInfoStr .= " curl/$curlVer";
+                }
             }
             if (!is_null($appInfo)) {
                 $libraryInfoStr .= " $appInfo->appName/$appInfo->appVersion";

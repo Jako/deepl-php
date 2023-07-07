@@ -45,6 +45,7 @@ class UserAgentTestDefault extends DeepLTestBase
             $this->assertStringContainsString('deepl-php/', $userAgentHeader);
             $this->assertStringContainsString('(', $userAgentHeader);
             $this->assertStringContainsString(' php/', $userAgentHeader);
+            $this->assertStringContainsString('curl/', $userAgentHeader);
             $return_var = 1;
         });
         $translator = $this->makeTranslator();
@@ -58,6 +59,7 @@ class UserAgentTestDefault extends DeepLTestBase
             $this->assertStringContainsString('deepl-php/', $userAgentHeader);
             $this->assertStringContainsString('(', $userAgentHeader);
             $this->assertStringContainsString(' php/', $userAgentHeader);
+            $this->assertStringContainsString('curl/', $userAgentHeader);
             $return_var = 1;
         });
         $translator = $this->makeTranslator(['send_platform_info' => true]);
@@ -71,6 +73,7 @@ class UserAgentTestDefault extends DeepLTestBase
             $this->assertStringContainsString('deepl-php/', $userAgentHeader);
             $this->assertStringNotContainsString('(', $userAgentHeader);
             $this->assertStringNotContainsString(' php/', $userAgentHeader);
+            $this->assertStringNotContainsString('curl/', $userAgentHeader);
             $return_var = 1;
         });
         $translator = $this->makeTranslator(['send_platform_info' => false]);

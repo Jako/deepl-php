@@ -10,8 +10,6 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Psr7\Request;
-use \Psr\Http\Client\ClientInterface;
 
 /**
  * Tests for the User-Agent header with a custom HTTP client (guzzle).
@@ -63,6 +61,7 @@ class UserAgentTestCustom extends DeepLTestBase
         $this->assertStringContainsString('deepl-php/', $userAgentHeader);
         $this->assertStringContainsString('(', $userAgentHeader);
         $this->assertStringContainsString(' php/', $userAgentHeader);
+        $this->assertStringNotContainsString('curl/', $userAgentHeader);
         $this->assertCount(1, $this->requestsHistory);
     }
 
@@ -77,6 +76,7 @@ class UserAgentTestCustom extends DeepLTestBase
         $this->assertStringContainsString('deepl-php/', $userAgentHeader);
         $this->assertStringNotContainsString('(', $userAgentHeader);
         $this->assertStringNotContainsString(' php/', $userAgentHeader);
+        $this->assertStringNotContainsString('curl/', $userAgentHeader);
         $this->assertCount(1, $this->requestsHistory);
     }
 
@@ -104,6 +104,7 @@ class UserAgentTestCustom extends DeepLTestBase
         $this->assertStringContainsString('(', $userAgentHeader);
         $this->assertStringContainsString(' php/', $userAgentHeader);
         $this->assertStringContainsString('my-custom-php-chat-client/1.2.3', $userAgentHeader);
+        $this->assertStringNotContainsString('curl/', $userAgentHeader);
         $this->assertCount(1, $this->requestsHistory);
     }
 
@@ -120,6 +121,7 @@ class UserAgentTestCustom extends DeepLTestBase
         $this->assertStringContainsString('(', $userAgentHeader);
         $this->assertStringContainsString(' php/', $userAgentHeader);
         $this->assertStringContainsString('my-custom-php-chat-client/1.2.3', $userAgentHeader);
+        $this->assertStringNotContainsString('curl/', $userAgentHeader);
         $this->assertCount(1, $this->requestsHistory);
     }
 
@@ -136,6 +138,7 @@ class UserAgentTestCustom extends DeepLTestBase
         $this->assertStringNotContainsString('(', $userAgentHeader);
         $this->assertStringNotContainsString(' php/', $userAgentHeader);
         $this->assertStringContainsString('my-custom-php-chat-client/1.2.3', $userAgentHeader);
+        $this->assertStringNotContainsString('curl/', $userAgentHeader);
         $this->assertCount(1, $this->requestsHistory);
     }
 
