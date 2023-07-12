@@ -90,6 +90,23 @@ license_check_manual:
   rules:
     - if: $CI_PIPELINE_SOURCE != "schedule"
 
+.check_init_php_base:
+  stage: check
+  image: ${DOCKER_IMAGE_PREFIX}_8.1-alpine
+  script:
+    - ./check_init_php.sh
+
+check_init_php_scheduled:
+  extends: .check_init_php_base
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+  retry: 2
+
+check_init_php_manual:
+  extends: .check_init_php_base
+  rules:
+    - if: $CI_PIPELINE_SOURCE != "schedule"
+
 # stage: test ----------------------
 
 .test_base:
